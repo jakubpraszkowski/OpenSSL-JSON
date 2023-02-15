@@ -91,7 +91,6 @@ bool configure_context(SSL_CTX* ctx)
         return false;
     }
 
-    // Dodanie weryfikacji kluczy
     SSL_CTX_set_verify(ctx, SSL_VERIFY_PEER, nullptr);
     return true;
 }
@@ -158,7 +157,7 @@ int main(int argc, char** argv)
         else {
             do
             {
-                bytes = SSL_read(ssl, buf, 1023); //tu bedzie sie wykonywalo az SSL_read zwróci zero i wtedy jest break oraz również ograniczenie w while 
+                bytes = SSL_read(ssl, buf, 1023);
                 if (bytes > 0)
                 {
                     buf[bytes] = 0;
@@ -167,7 +166,7 @@ int main(int argc, char** argv)
                 }
                 else if (bytes == 0)
                 {
-                    printf("No data to receive\n"); // tutaj nie wiem ocb
+                    printf("No data to receive\n");
                     break;
                 }
                 else
